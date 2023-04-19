@@ -1,0 +1,24 @@
+### Create article
+POST localhost:8080/api/v1/article
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE4NDUyNTQsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODE5MzE2NTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.e_KqkR5CsfEGXS8nnkOZ5gZK8hYMxf8hHwsieOfRp-9ET5HL3rIOzWQkPSzSB3kM_t3qmGGTr-nr4n_74lbTEw
+Content-Type:  application/json
+
+{
+  "nameUZ": "rrrr",
+  "nameRU": "ttt",
+  "nameEN": "yyyy"
+}
+
+
+### Update article
+PUT localhost:8080/api/v1/article/update/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE4NDUyNTQsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODE5MzE2NTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.e_KqkR5CsfEGXS8nnkOZ5gZK8hYMxf8hHwsieOfRp-9ET5HL3rIOzWQkPSzSB3kM_t3qmGGTr-nr4n_74lbTEw
+Content-Type:  application/json
+
+{
+  "nameUZ": "eeee",
+  "nameRU": "eeee",
+  "nameEN": "eeee"
+
+
+}

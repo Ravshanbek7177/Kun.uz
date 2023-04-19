@@ -1,0 +1,57 @@
+### Create profle
+POST localhost:8080/api/v1/profile
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE4NDUyNTQsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODE5MzE2NTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.e_KqkR5CsfEGXS8nnkOZ5gZK8hYMxf8hHwsieOfRp-9ET5HL3rIOzWQkPSzSB3kM_t3qmGGTr-nr4n_74lbTEw
+Content-Type:  application/json
+
+{
+
+  "name": "ali",
+  "surname": "Aliyev",
+  "email": "asl@gmail.com",
+  "phone": "12345",
+  "password": "123123",
+  "role": "ADMIN"
+
+}
+
+
+### Update profle
+PUT localhost:8080/api/v1/profile/update/3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE4NDUyNTQsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODE5MzE2NTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.e_KqkR5CsfEGXS8nnkOZ5gZK8hYMxf8hHwsieOfRp-9ET5HL3rIOzWQkPSzSB3kM_t3qmGGTr-nr4n_74lbTEw
+Content-Type:  application/json
+
+{
+
+  "name": "BBB",
+  "surname": "BBB",
+  "email": "asl1@gmail.com",
+  "phone": "2222",
+  "password": "2222",
+  "role": "MODERATOR"
+
+}
+
+### Update profle
+PUT localhost:8080/api/v1/profile/update2/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE4NDUyNTQsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODE5MzE2NTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.e_KqkR5CsfEGXS8nnkOZ5gZK8hYMxf8hHwsieOfRp-9ET5HL3rIOzWQkPSzSB3kM_t3qmGGTr-nr4n_74lbTEw
+Content-Type:  application/json
+
+{
+
+  "name": "GG",
+  "surname": "DD",
+  "email": "GGG@gmail.com",
+  "phone": "1222",
+  "password": "277",
+  "role": "PUBLISHER"
+
+}
+
+### Profile List
+GET localhost:8080/api/v1/profile/pagination?page=1&size=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE4NDUyNTQsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODE5MzE2NTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.e_KqkR5CsfEGXS8nnkOZ5gZK8hYMxf8hHwsieOfRp-9ET5HL3rIOzWQkPSzSB3kM_t3qmGGTr-nr4n_74lbTEw
+
+
+### Profile Delete
+DELETE localhost:8080/api/v1/profile/delete/5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE4NDUyNTQsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODE5MzE2NTQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.e_KqkR5CsfEGXS8nnkOZ5gZK8hYMxf8hHwsieOfRp-9ET5HL3rIOzWQkPSzSB3kM_t3qmGGTr-nr4n_74lbTEw
