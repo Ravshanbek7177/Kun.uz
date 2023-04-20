@@ -2,16 +2,15 @@ package com.example.kun_uz_.service;
 
 import com.example.kun_uz_.dto.ArticleTureDTO;
 import com.example.kun_uz_.entity.ArticleTureEntity;
-import com.example.kun_uz_.entity.ProfileEntity;
-import com.example.kun_uz_.enums.GeneralStatus;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.repository.ArticleTypeRepository;
-import com.example.kun_uz_.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,5 +54,38 @@ public class ArticleTypeService {
          repository.save(entity);
         dto.setId(entity.getId());
         return dto;
+    }
+
+    public boolean delete(Integer id) {
+        Optional<ArticleTureEntity> optional = repository.findById(id);
+        if(optional.isEmpty()){
+            throw new AppBadRequestException("yo'qku");
+        }
+       repository.delete(optional.get());
+        return true;
+    }
+
+    public Page<ArticleTureDTO> list(int page, int size) {
+        Sort sort = Sort.by(Sort.Direction.DESC,"createdDate");
+        Pageable pageable = PageRequest.of(page-1,size,sort);
+
+        Page<ArticleTureEntity> pageObj = repository.findAll(pageable);
+        Long totalCount = pageObj.getTotalElements();
+
+        List<ArticleTureEntity> articleTureEntities = pageObj.getContent();
+        List<ArticleTureDTO> list = new LinkedList<>();
+
+        for(ArticleTureEntity entity: articleTureEntities){
+            ArticleTureDTO dto = (ArticleTureDTO) pageObj.get();
+            dto.setNameUZ(entity.getNameUZ());
+            dto.setNameRU(entity.getNameRU());
+            dto.setNameEN(entity.getNameEN());
+           // dto.setVisible(true);
+            repository.save(entity);
+           list.add(dto);
+        }
+        Page<ArticleTureDTO> response = new PageImpl<>(list,pageable,totalCount);
+
+       return response;
     }
 }

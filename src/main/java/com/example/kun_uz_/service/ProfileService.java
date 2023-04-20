@@ -107,7 +107,7 @@ public class ProfileService {
         List<ProfileEntity> list = new LinkedList<>();
 
         for(ProfileEntity entity : courseEntitieList){
-            ProfileDTO dto = new ProfileDTO();
+            ProfileDTO dto = (ProfileDTO) pageObj.get();
             dto.setId(entity.getId());
             dto.setName(entity.getName());
             dto.setSurname(entity.getSurname());
