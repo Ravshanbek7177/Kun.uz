@@ -1,4 +1,4 @@
-package com.example.kun_uz_.dto;
+package com.example.kun_uz_.dto.ProfileDto;
 
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.GeneralStatus;
