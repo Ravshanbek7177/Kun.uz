@@ -1,6 +1,6 @@
 package com.example.kun_uz_.service;
 
-import com.example.kun_uz_.dto.ProfileDTO;
+import com.example.kun_uz_.dto.ProfileDto.ProfileDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.GeneralStatus;
 import com.example.kun_uz_.exps.AppBadRequestException;
@@ -21,9 +21,9 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    public ProfileDTO create(ProfileDTO dto, Integer adminId) {  // ,
+    public ProfileDTO create(ProfileDTO dto) {  // ,
         // check - homework
-        isValidProfile(dto);
+        //isValidProfile(dto);
 
         ProfileEntity entity = new ProfileEntity();
         entity.setName(dto.getName());
@@ -35,7 +35,7 @@ public class ProfileService {
         entity.setCreatedDate(LocalDateTime.now());
         entity.setVisible(true);
         entity.setStatus(GeneralStatus.ACTIVE);
-        entity.setPrtId(adminId);
+       // entity.setPrtId(adminId);
         profileRepository.save(entity); // save profile
 
         dto.setPassword(null);
@@ -43,13 +43,13 @@ public class ProfileService {
         return dto;
     }
 
-    public void isValidProfile(ProfileDTO dto) {
+   /* public void isValidProfile(ProfileDTO dto) {
         // throw ...
         Optional<ProfileEntity> optional = profileRepository.findById(dto.getId());
         if (optional.isEmpty()) {
-            throw new AppBadRequestException(" bu foydalanuvchi yoqku");
+            throw new AppBadRequestException(" bu foydalanuvchi mavjud");
         }
-    }
+    }*/
 
     public ProfileEntity get(Integer id) {
         return profileRepository.findById(id).orElseThrow(() -> {

@@ -1,0 +1,46 @@
+### Create profle
+POST localhost:8080/api/v1/article1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzNDE0NjksImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQyNzg2OSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.j60k8NPxubecnYPM_wxFmqz2T8TjIPIgJX9_er0TPsYB6b-EbFW4JRSewaLltLEqFutlGu2aPU8aFe8Kf7HNYQ
+Content-Type:  application/json
+
+{
+
+  "title": "aaa",
+  "description": "Aliyev",
+  "content": "asdfghjk",
+  "shared_count": 12,
+  "region_id": 1,
+  "category_id": 1
+
+}
+
+### Update profle
+PUT localhost:8080/api/v1/article1/update/236c7588-da3f-4a22-930b-372aec18138a
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+Content-Type:  application/json
+
+{
+
+  "title": "BBB",
+  "description": "BBBB",
+  "content": "BBB",
+  "shared_count": 12,
+  "region_id": 1,
+  "category_id": 1
+
+}
+
+### Delete profle
+DELETE localhost:8080/api/v1/article1/delete/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+Content-Type:  application/json
+
+### Update2 profle
+PUT localhost:8080/api/v1/article1/update2/236c7588-da3f-4a22-930b-372aec18138a
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+Content-Type:  application/json
+
+{
+    "articleStatus":  "NOTPUBLISHED"
+}
+

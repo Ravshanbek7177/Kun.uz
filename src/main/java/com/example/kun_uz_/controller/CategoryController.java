@@ -1,25 +1,23 @@
 package com.example.kun_uz_.controller;
 
-import com.example.kun_uz_.dto.articleTypeDto.ArticleTypeDTO;
+import com.example.kun_uz_.dto.categoryEntity.CategoryDTO;
 import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
 import com.example.kun_uz_.enums.ProfileRole;
 import com.example.kun_uz_.exps.MethodNotAllowedException;
-import com.example.kun_uz_.service.ArticleTypeService;
+import com.example.kun_uz_.service.CategoryService;
 import com.example.kun_uz_.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/article")
-public class ArticleTypeController {
-
+@RequestMapping("/api/v1/category")
+public class CategoryController {
     @Autowired
-    private ArticleTypeService service;
-
+    private CategoryService service;
     @PostMapping({"", "/"})
-    public ResponseEntity<ArticleTypeDTO> create(@RequestBody ArticleTypeDTO dto,
-                                                 @RequestHeader("Authorization") String authorization) {
+    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto,
+                                              @RequestHeader("Authorization") String authorization) {
         String[] str = authorization.split(" ");
         String jwt = str[1];
         JwtDTO jwtDTO = JwtUtil.decode(jwt);
@@ -30,8 +28,8 @@ public class ArticleTypeController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ArticleTypeDTO> update(@PathVariable("id") Integer id, @RequestBody ArticleTypeDTO dto,
-                                                 @RequestHeader("Authorization") String authorization){
+    public ResponseEntity<CategoryDTO> update(@PathVariable("id") Integer id, @RequestBody CategoryDTO dto,
+                                            @RequestHeader("Authorization") String authorization){
         String[] str = authorization.split(" ");
         String jwt = str[1];
         JwtDTO jwtDTO = JwtUtil.decode(jwt);

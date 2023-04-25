@@ -1,7 +1,7 @@
 package com.example.kun_uz_.controller;
 
-import com.example.kun_uz_.dto.JwtDTO;
-import com.example.kun_uz_.dto.ProfileDTO;
+import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
+import com.example.kun_uz_.dto.ProfileDto.ProfileDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.ProfileRole;
 import com.example.kun_uz_.exps.MethodNotAllowedException;
@@ -19,15 +19,16 @@ public class ProfileController {
     private ProfileService profileService;
 
     @PostMapping({"", "/"})
-    public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto,
-                                             @RequestHeader("Authorization") String authorization) {
-        String[] str = authorization.split(" ");
-        String jwt = str[1];
-        JwtDTO jwtDTO = JwtUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)) {
-            throw new MethodNotAllowedException("Method not allowed");
-        }
-        return ResponseEntity.ok(profileService.create(dto, jwtDTO.getId()));
+    public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto
+            ,@RequestHeader("Authorization") String authorization) {
+
+            String[] str = authorization.split(" ");
+            String jwt = str[1];
+            JwtDTO jwtDTO = JwtUtil.decode(jwt);
+            if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)) {
+                throw new MethodNotAllowedException("Method not allowed");
+            }
+        return ResponseEntity.ok(profileService.create(dto));
     }
 
     @PutMapping("/update/{id}")

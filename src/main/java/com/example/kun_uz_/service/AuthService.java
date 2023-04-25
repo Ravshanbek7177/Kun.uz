@@ -1,9 +1,8 @@
 package com.example.kun_uz_.service;
 
-import com.example.kun_uz_.dto.AuthDTO;
-import com.example.kun_uz_.dto.AuthResponseDTO;
-import com.example.kun_uz_.dto.ProfileDTO;
-import com.example.kun_uz_.dto.RegistrationDTO;
+import com.example.kun_uz_.dto.RegionDTO.RegistrationDTO;
+import com.example.kun_uz_.dto.authDTO.AuthDTO;
+import com.example.kun_uz_.dto.authDTO.AuthResponseDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.GeneralStatus;
 import com.example.kun_uz_.enums.ProfileRole;
@@ -42,7 +41,7 @@ public class AuthService {
         return responseDTO;
     }
 
-    public Object registration(ProfileDTO dto) {
+    public Object registration(RegistrationDTO dto) {
         Optional<ProfileEntity> optional = profileRepository.findByEmailAndPasswordAndPhone(dto.getEmail(),MD5Util.getMd5Hash(dto.getPassword()),dto.getPhone());
         if(optional.isPresent()){
             throw new ItemNotFoundException("Email or phone or password incorrect");
@@ -57,7 +56,6 @@ public class AuthService {
         entity.setRole(ProfileRole.USER);
         profileRepository.save(entity);
 
-        dto.setId(entity.getId());
         return dto;
     }
 }

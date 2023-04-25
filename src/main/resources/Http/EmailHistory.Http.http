@@ -1,0 +1,10 @@
+### Create email
+POST localhost:8080/api/v1/emailHistory
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzNDE0NjksImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQyNzg2OSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.j60k8NPxubecnYPM_wxFmqz2T8TjIPIgJX9_er0TPsYB6b-EbFW4JRSewaLltLEqFutlGu2aPU8aFe8Kf7HNYQ
+Content-Type:  application/json
+
+{
+  "email": "sss@gmil.com",
+  "message": "zor"
+
+}

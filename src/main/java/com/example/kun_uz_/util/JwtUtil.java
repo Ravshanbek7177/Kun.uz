@@ -1,6 +1,6 @@
 package com.example.kun_uz_.util;
 
-import com.example.kun_uz_.dto.JwtDTO;
+import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
 import com.example.kun_uz_.enums.ProfileRole;
 import com.example.kun_uz_.exps.MethodNotAllowedException;
 import io.jsonwebtoken.*;

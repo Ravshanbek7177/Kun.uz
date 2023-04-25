@@ -1,10 +1,7 @@
 package com.example.kun_uz_.repository;
 
 
-import com.example.kun_uz_.dto.ProfileDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -14,4 +11,7 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     Optional<ProfileEntity> findByEmailAndPasswordAndVisible(String email, String password, boolean visible);
 
     Optional<ProfileEntity> findByEmailAndPasswordAndPhone(String email, String md5Hash, String phone);
+
+    Optional<ProfileEntity> findByEmail(String email);
+
 }

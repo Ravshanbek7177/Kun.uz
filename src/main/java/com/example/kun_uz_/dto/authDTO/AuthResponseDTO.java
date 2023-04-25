@@ -1,4 +1,4 @@
-package com.example.kun_uz_.dto;
+package com.example.kun_uz_.dto.authDTO;
 
 import com.example.kun_uz_.enums.ProfileRole;
 import lombok.Getter;
