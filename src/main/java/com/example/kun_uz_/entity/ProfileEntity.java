@@ -39,4 +39,8 @@ public class ProfileEntity {
     // photo_id
     @Column(name = "prt_id")
     private Integer prtId;
+
+    @Column(name = "Photo")
+    @OneToOne(fetch = FetchType.LAZY)
+    private AttachEntity attachEntity;
 }

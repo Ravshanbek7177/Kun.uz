@@ -133,6 +133,11 @@ public class ProfileService {
          profileRepository.delete(optional.get());
         return true;
     }
+
+    public Object getFilter(ProfileDTO studentCourseDTO) {
+
+        return null;
+    }
 }
 
 

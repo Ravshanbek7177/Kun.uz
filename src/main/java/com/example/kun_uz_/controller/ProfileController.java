@@ -1,5 +1,6 @@
 package com.example.kun_uz_.controller;
 
+import com.example.kun_uz_.dto.Attach.AttachDTO;
 import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
 import com.example.kun_uz_.dto.ProfileDto.ProfileDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/profile")
@@ -73,6 +76,13 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.delete(id));
 
     }
+
+    @PostMapping("/filter1")
+    public ResponseEntity<List<ProfileDTO>> getFilter1(@RequestBody ProfileDTO studentCourseDTO){
+        return (ResponseEntity<List<ProfileDTO>>) profileService.getFilter(studentCourseDTO);
+    }
+
+
 
 
 }
