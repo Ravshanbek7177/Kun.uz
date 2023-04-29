@@ -1,11 +1,12 @@
 package com.example.kun_uz_.controller;
 
 
-import com.example.kun_uz_.dto.RegionDTO.RegistrationDTO;
-import com.example.kun_uz_.dto.RegionDTO.RegistrationResponseDTO;
+import com.example.kun_uz_.dto.authDTO.RegistrationDTO;
+import com.example.kun_uz_.dto.authDTO.RegistrationResponseDTO;
 import com.example.kun_uz_.dto.authDTO.AuthDTO;
 import com.example.kun_uz_.dto.authDTO.AuthResponseDTO;
 import com.example.kun_uz_.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,11 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping({"","/"})
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody AuthDTO dto) {
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody @Valid AuthDTO dto) {
         return ResponseEntity.ok(authService.login(dto));
     }
     @PostMapping("/register")
-    public ResponseEntity<RegistrationResponseDTO> registration(@RequestBody RegistrationDTO dto) {
+    public ResponseEntity<RegistrationResponseDTO> registration(@RequestBody @Valid  RegistrationDTO dto) {
         return ResponseEntity.ok((RegistrationResponseDTO) authService.registration(dto));
     }
 

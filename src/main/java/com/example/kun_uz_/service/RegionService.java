@@ -6,6 +6,7 @@ import com.example.kun_uz_.entity.RegionEntity;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.exps.ItemNotFoundException;
 import com.example.kun_uz_.repository.RegionRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 
 @Service
+@AllArgsConstructor
 public class RegionService {
     @Autowired
     private RegionRepository regionRepository;
@@ -52,7 +54,7 @@ public class RegionService {
     public RegionEntity get(Integer id) {
         Optional<RegionEntity> optional = regionRepository.findById(id);
         if (optional.isEmpty()) {
-            throw new ItemNotFoundException("Article not found: " + id);
+            throw new ItemNotFoundException("ArticleEntity not found: " + id);
         }
         return optional.get();
     }

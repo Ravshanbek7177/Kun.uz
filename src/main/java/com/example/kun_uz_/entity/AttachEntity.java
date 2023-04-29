@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "attach")
 @Entity
-public class AttachEntity {
+public class AttachEntity {  // Bo'ldi
     @Id
     private String id;
     @Column(name = "original_name")

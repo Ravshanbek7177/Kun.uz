@@ -3,11 +3,13 @@ package com.example.kun_uz_.controller;
 import com.example.kun_uz_.dto.Attach.AttachDTO;
 import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
 import com.example.kun_uz_.dto.ProfileDto.ProfileDTO;
+import com.example.kun_uz_.dto.ProfileDto.ProfileFilterDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.ProfileRole;
 import com.example.kun_uz_.exps.MethodNotAllowedException;
 import com.example.kun_uz_.service.ProfileService;
 import com.example.kun_uz_.util.JwtUtil;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -17,37 +19,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/profile")
-public class ProfileController {
+public class ProfileController {   //   BO"LDI
     @Autowired
     private ProfileService profileService;
 
     @PostMapping({"", "/"})
-    public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto
+    public ResponseEntity<ProfileDTO> create(@RequestBody @Valid  ProfileDTO dto
             ,@RequestHeader("Authorization") String authorization) {
 
-            String[] str = authorization.split(" ");
-            String jwt = str[1];
-            JwtDTO jwtDTO = JwtUtil.decode(jwt);
-            if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)) {
-                throw new MethodNotAllowedException("Method not allowed");
-            }
+        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.create(dto));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ProfileDTO> update(@PathVariable("id") Integer id, @RequestBody ProfileDTO dto,
+    public ResponseEntity<ProfileDTO> update(@PathVariable("id") Integer id, @RequestBody @Valid ProfileDTO dto,
                                          @RequestHeader("Authorization") String authorization){
-        String[] str = authorization.split(" ");
-        String jwt = str[1];
-        JwtDTO jwtDTO = JwtUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)) {
-            throw new MethodNotAllowedException("Method not allowed");
-        }
+        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.update(id,dto));
     }
 
     @PutMapping("/update2/{id}")
-    public ProfileDTO getById(@PathVariable("id") Integer id , @RequestBody ProfileDTO dto) {
+    public ProfileDTO getById(@PathVariable("id") Integer id , @RequestBody @Valid ProfileDTO dto) {
         return ResponseEntity.ok(profileService.update2(id,dto)).getBody();
     }
 
@@ -55,31 +47,21 @@ public class ProfileController {
     public ResponseEntity<Page<ProfileEntity>> pagination(@RequestParam(value = "page",defaultValue = "1") int page,
                                                           @RequestParam(value = "size",defaultValue = "6") int size,
                                                           @RequestHeader("Authorization") String authorization) {
-        String[] str = authorization.split(" ");
-        String jwt = str[1];
-        JwtDTO jwtDTO = JwtUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)) {
-            throw new MethodNotAllowedException("Method not allowed");
-        }
+        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.getAll(page,size));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> deleteById(@PathVariable("id") Integer id,
                                               @RequestHeader("Authorization") String authorization) {
-        String [] sql = authorization.split(" ");
-        String jwt = sql[1];
-        JwtDTO jwtDTO = JwtUtil.decode(jwt);
-        if (!jwtDTO.getRole().equals(ProfileRole.ADMIN)) {
-            throw new MethodNotAllowedException("Method not allowed");
-        }
+        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.delete(id));
 
     }
 
-    @PostMapping("/filter1")
-    public ResponseEntity<List<ProfileDTO>> getFilter1(@RequestBody ProfileDTO studentCourseDTO){
-        return (ResponseEntity<List<ProfileDTO>>) profileService.getFilter(studentCourseDTO);
+    @PostMapping("/filter")
+    public ResponseEntity<List<ProfileFilterDTO>> getFilter1(@RequestBody @Valid ProfileFilterDTO profileFilterDTO){
+        return (ResponseEntity<List<ProfileFilterDTO>>) profileService.getFilter(profileFilterDTO);
     }
 
 

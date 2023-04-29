@@ -1,46 +1,50 @@
-### Create profle
+### Create article1
 POST localhost:8080/api/v1/article1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzNDE0NjksImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQyNzg2OSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.j60k8NPxubecnYPM_wxFmqz2T8TjIPIgJX9_er0TPsYB6b-EbFW4JRSewaLltLEqFutlGu2aPU8aFe8Kf7HNYQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDM2MjIsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjgzMDAyMiwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.s8jNCiTz8zazZAaCGv10c6yKQqvRT3x7ct88ptqcpilUN1ZNioJo-Fvaf7yQ6b6hez15Jdvpjgvl-q9AWivuhg
 Content-Type:  application/json
 
 {
 
-  "title": "aaa",
-  "description": "Aliyev",
-  "content": "asdfghjk",
-  "shared_count": 12,
-  "region_id": 1,
-  "category_id": 1
+  "title": "aaaaaaaaaaaaa",
+  "description": "ssssssssssss",
+  "content": "dfghjkl",
+  "categoryId": 1,
+  "regionId": 1,
+  "category_id": 1,
+  "attachId": "7f12f329-e7c2-4e08-88d9-e268deb1c08c",
+  "articleTypeId": 21
 
 }
 
 ### Update profle
-PUT localhost:8080/api/v1/article1/update/236c7588-da3f-4a22-930b-372aec18138a
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+PUT localhost:8080/api/v1/article1/update/57e6650c-dca7-438f-a77f-e7b5d4531820
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDM2MjIsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjgzMDAyMiwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.s8jNCiTz8zazZAaCGv10c6yKQqvRT3x7ct88ptqcpilUN1ZNioJo-Fvaf7yQ6b6hez15Jdvpjgvl-q9AWivuhg
 Content-Type:  application/json
 
 {
 
-  "title": "BBB",
-  "description": "BBBB",
-  "content": "BBB",
-  "shared_count": 12,
-  "region_id": 1,
-  "category_id": 1
+  "title": "qqwwweertyuiopiuy",
+  "description": "Alish",
+  "content": "mailumotlar",
+  "categoryId": 1,
+  "regionId": 1,
+  "category_id": 1,
+  "attachId": "7f12f329-e7c2-4e08-88d9-e268deb1c08c",
+  "articleTypeId": 21
 
 }
 
 ### Delete profle
-DELETE localhost:8080/api/v1/article1/delete/2
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+DELETE localhost:8080/api/v1/article1/delete/57e6650c-dca7-438f-a77f-e7b5d4531820
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDM2MjIsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjgzMDAyMiwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.s8jNCiTz8zazZAaCGv10c6yKQqvRT3x7ct88ptqcpilUN1ZNioJo-Fvaf7yQ6b6hez15Jdvpjgvl-q9AWivuhg
 Content-Type:  application/json
 
 ### Update2 profle
-PUT localhost:8080/api/v1/article1/update2/236c7588-da3f-4a22-930b-372aec18138a
+PUT localhost:8080/api/v1/article1/update2/57e6650c-dca7-438f-a77f-e7b5d4531820
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
 Content-Type:  application/json
 
 {
-    "articleStatus":  "NOTPUBLISHED"
+    "status":  "NOT_PUBLISHED"
 }
 

@@ -6,6 +6,7 @@ import com.example.kun_uz_.entity.CategoryEntity;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.exps.ItemNotFoundException;
 import com.example.kun_uz_.repository.CategoryRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class CategoryService {
     @Autowired
     private CategoryRepository repository;
@@ -63,7 +65,7 @@ public class CategoryService {
         return optional.get();
     }
 
-    public Page<CategoryDTO> list(int page, int size) {
+    public Page<ArticleTypeDTO> list(int page, int size) {
         Sort sort = Sort.by(Sort.Direction.DESC,"createdDate");
         Pageable pageable = PageRequest.of(page-1,size,sort);
 
@@ -71,7 +73,7 @@ public class CategoryService {
         Long totalCount = pageObj.getTotalElements();
 
         List<CategoryEntity> articleTureEntities = pageObj.getContent();
-        List<CategoryDTO> list = new LinkedList<>();
+        List<ArticleTypeDTO> list = new LinkedList<>();
 
         for(CategoryEntity entity: articleTureEntities){
             ArticleTypeDTO dto = new ArticleTypeDTO();
@@ -81,7 +83,7 @@ public class CategoryService {
             // dto.setVisible(true);
             list.add(dto);
         }
-        Page<CategoryDTO> response = new PageImpl<>(list,pageable,totalCount);
+        Page<ArticleTypeDTO> response = new PageImpl<>(list,pageable,totalCount);
 
         return response;
     }

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "category")
-public class CategoryEntity {
+public class CategoryEntity {   // Bo'ldi
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;

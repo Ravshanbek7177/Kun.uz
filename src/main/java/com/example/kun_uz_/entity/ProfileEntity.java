@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "profile2")
 @Entity
-public class ProfileEntity {
+public class ProfileEntity {  // Bo'ldi
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -40,7 +40,4 @@ public class ProfileEntity {
     @Column(name = "prt_id")
     private Integer prtId;
 
-    @Column(name = "Photo")
-    @OneToOne(fetch = FetchType.LAZY)
-    private AttachEntity attachEntity;
 }

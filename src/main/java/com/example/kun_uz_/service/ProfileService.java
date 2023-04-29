@@ -1,11 +1,14 @@
 package com.example.kun_uz_.service;
 
 import com.example.kun_uz_.dto.ProfileDto.ProfileDTO;
+import com.example.kun_uz_.dto.ProfileDto.ProfileFilterDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.GeneralStatus;
 import com.example.kun_uz_.exps.AppBadRequestException;
+import com.example.kun_uz_.repository.ProfileFilterRepository;
 import com.example.kun_uz_.repository.ProfileRepository;
 import com.example.kun_uz_.util.MD5Util;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -16,10 +19,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ProfileService {
 
     @Autowired
     private ProfileRepository profileRepository;
+    @Autowired
+    private ProfileFilterRepository profileFilterRepository;
 
     public ProfileDTO create(ProfileDTO dto) {  // ,
         // check - homework
@@ -107,7 +113,7 @@ public class ProfileService {
         List<ProfileEntity> list = new LinkedList<>();
 
         for(ProfileEntity entity : courseEntitieList){
-            ProfileDTO dto = (ProfileDTO) pageObj.get();
+            ProfileDTO dto = new ProfileDTO();
             dto.setId(entity.getId());
             dto.setName(entity.getName());
             dto.setSurname(entity.getSurname());
@@ -134,9 +140,9 @@ public class ProfileService {
         return true;
     }
 
-    public Object getFilter(ProfileDTO studentCourseDTO) {
-
-        return null;
+    public List<ProfileEntity> getFilter(ProfileFilterDTO studentCourseDTO) {
+        List<ProfileEntity> entityList = profileFilterRepository.filter(studentCourseDTO);
+        return entityList;
     }
 }
 

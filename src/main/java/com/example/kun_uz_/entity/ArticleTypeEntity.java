@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "article_type")
-public class ArticleTureEntity {
+public class ArticleTypeEntity {   // bo'ldi
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
@@ -24,7 +23,4 @@ public class ArticleTureEntity {
     private Boolean visible = Boolean.TRUE;
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
-   @Column(name = "key")
-    private String key;
-
 }

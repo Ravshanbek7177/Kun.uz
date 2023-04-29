@@ -1,6 +1,6 @@
-### Create article
+### Create region
 POST localhost:8080/api/v1/region
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE5ODY3MjksImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODIwNzMxMjksImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.GCcqfVMZXrQMn4b3ZYedmAPaRWEYlKwlotM9HpCXmo0zYfSyn9brBLDCxDs6dL5OTw2HrExFOYb4XyQ-3IoDcg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDczMzYsImlkIjoxMSwicm9sZSI6IkFETUlOIiwiZXhwIjoxNjgyODMzNzM2LCJpc3MiOiJLdW51eiB0ZXN0IHBvcnRhbGkifQ.C3JtZ3qZrnb44DeO-t41RPNbdNRZlUlikyrH0vdmje4f5-K6xgRZyXdng9ukhAOPATbe8KmovcAPV2Tfw8etsQ
 Content-Type:  application/json
 
 {
@@ -10,9 +10,9 @@ Content-Type:  application/json
 }
 
 
-### Update article
+### Update region
 PUT localhost:8080/api/v1/region
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE5ODY3MjksImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODIwNzMxMjksImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.GCcqfVMZXrQMn4b3ZYedmAPaRWEYlKwlotM9HpCXmo0zYfSyn9brBLDCxDs6dL5OTw2HrExFOYb4XyQ-3IoDcg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDczMzYsImlkIjoxMSwicm9sZSI6IkFETUlOIiwiZXhwIjoxNjgyODMzNzM2LCJpc3MiOiJLdW51eiB0ZXN0IHBvcnRhbGkifQ.C3JtZ3qZrnb44DeO-t41RPNbdNRZlUlikyrH0vdmje4f5-K6xgRZyXdng9ukhAOPATbe8KmovcAPV2Tfw8etsQ
 Content-Type:  application/json
 
 {
@@ -21,14 +21,14 @@ Content-Type:  application/json
   "nameEN": "eeee"
 }
 
-### Delete article
+### Delete region
 DELETE localhost:8080/api/v1/region/delete/3
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE5ODY3MjksImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODIwNzMxMjksImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.GCcqfVMZXrQMn4b3ZYedmAPaRWEYlKwlotM9HpCXmo0zYfSyn9brBLDCxDs6dL5OTw2HrExFOYb4XyQ-3IoDcg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDczMzYsImlkIjoxMSwicm9sZSI6IkFETUlOIiwiZXhwIjoxNjgyODMzNzM2LCJpc3MiOiJLdW51eiB0ZXN0IHBvcnRhbGkifQ.C3JtZ3qZrnb44DeO-t41RPNbdNRZlUlikyrH0vdmje4f5-K6xgRZyXdng9ukhAOPATbe8KmovcAPV2Tfw8etsQ
 Content-Type:  application/json
 
 
-### List article
+### List region
 GET localhost:8080/api/v1/region/list
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE5ODY3MjksImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODIwNzMxMjksImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.GCcqfVMZXrQMn4b3ZYedmAPaRWEYlKwlotM9HpCXmo0zYfSyn9brBLDCxDs6dL5OTw2HrExFOYb4XyQ-3IoDcg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDczMzYsImlkIjoxMSwicm9sZSI6IkFETUlOIiwiZXhwIjoxNjgyODMzNzM2LCJpc3MiOiJLdW51eiB0ZXN0IHBvcnRhbGkifQ.C3JtZ3qZrnb44DeO-t41RPNbdNRZlUlikyrH0vdmje4f5-K6xgRZyXdng9ukhAOPATbe8KmovcAPV2Tfw8etsQ
 Content-Type:  application/json
 

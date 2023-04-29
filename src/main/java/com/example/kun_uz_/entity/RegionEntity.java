@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "region")
-public class RegionEntity {
+public class RegionEntity {  // Bo'ldi
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;

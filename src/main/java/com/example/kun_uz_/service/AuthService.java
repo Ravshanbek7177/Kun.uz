@@ -1,6 +1,6 @@
 package com.example.kun_uz_.service;
 
-import com.example.kun_uz_.dto.RegionDTO.RegistrationDTO;
+import com.example.kun_uz_.dto.authDTO.RegistrationDTO;
 import com.example.kun_uz_.dto.authDTO.AuthDTO;
 import com.example.kun_uz_.dto.authDTO.AuthResponseDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
@@ -11,12 +11,14 @@ import com.example.kun_uz_.exps.ItemNotFoundException;
 import com.example.kun_uz_.repository.ProfileRepository;
 import com.example.kun_uz_.util.JwtUtil;
 import com.example.kun_uz_.util.MD5Util;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class AuthService {
     @Autowired
     private ProfileRepository profileRepository;

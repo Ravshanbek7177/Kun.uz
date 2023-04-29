@@ -6,6 +6,7 @@ import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.exps.ItemNotFoundException;
 import com.example.kun_uz_.repository.AttachRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -27,6 +28,7 @@ import java.util.*;
 
 
 @Service
+@AllArgsConstructor
 public class AttachService {
 @Autowired
 private AttachRepository attachRepository;
