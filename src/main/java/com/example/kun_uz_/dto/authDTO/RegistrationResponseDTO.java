@@ -1,4 +1,4 @@
-package com.example.kun_uz_.dto.RegionDTO;
+package com.example.kun_uz_.dto.authDTO;
 
 import lombok.Getter;
 import lombok.Setter;

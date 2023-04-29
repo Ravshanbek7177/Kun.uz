@@ -23,7 +23,7 @@ public class AttachController {
 
     @PostMapping("/update")
     private ResponseEntity<?> update(@RequestParam("file") MultipartFile file){
-        String fileName = attachService.saveToSystem(file);
+        String fileName = attachService.saveToSystem3(file);
         return ResponseEntity.ok().body(fileName);
     }
 

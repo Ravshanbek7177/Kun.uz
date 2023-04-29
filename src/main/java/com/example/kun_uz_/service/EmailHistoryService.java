@@ -5,6 +5,7 @@ import com.example.kun_uz_.dto.ProfileDto.ProfileDTO;
 import com.example.kun_uz_.entity.EmailHistoryEntity;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.repository.EmailHistoryRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 
 @Service
+@AllArgsConstructor
 public class EmailHistoryService {
 
     @Autowired

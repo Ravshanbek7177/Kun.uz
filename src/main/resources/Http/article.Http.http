@@ -1,46 +1,82 @@
-### Create profle
+### Create article1
 POST localhost:8080/api/v1/article1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzNDE0NjksImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQyNzg2OSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.j60k8NPxubecnYPM_wxFmqz2T8TjIPIgJX9_er0TPsYB6b-EbFW4JRSewaLltLEqFutlGu2aPU8aFe8Kf7HNYQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MjU4OTUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MzAxMjI5NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.fJ62Z2wFk9NcC-7xxHYJhQnJToHqoKTwfS2FEqQG-XgECbS9VGnXMcFdZWFQX4WpiGp_en5z3e83edxEGIzbWQ
 Content-Type:  application/json
 
 {
 
-  "title": "aaa",
-  "description": "Aliyev",
-  "content": "asdfghjk",
-  "shared_count": 12,
-  "region_id": 1,
-  "category_id": 1
+  "title": "xxxxxxxxxxx",
+  "description": "xxxxxxxxxxx",
+  "content": "xxxxxxxxx",
+  "categoryId": 1,
+  "regionId": 1,
+  "category_id": 1,
+  "attachId": "7f12f329-e7c2-4e08-88d9-e268deb1c08c",
+  "typeId": 1,
+  "article_type": 1
 
 }
 
 ### Update profle
-PUT localhost:8080/api/v1/article1/update/236c7588-da3f-4a22-930b-372aec18138a
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+PUT localhost:8080/api/v1/article1/update/66676866-7a39-44dc-9292-22f6770d04e0
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MjU4OTUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MzAxMjI5NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.fJ62Z2wFk9NcC-7xxHYJhQnJToHqoKTwfS2FEqQG-XgECbS9VGnXMcFdZWFQX4WpiGp_en5z3e83edxEGIzbWQ
 Content-Type:  application/json
 
 {
 
-  "title": "BBB",
-  "description": "BBBB",
-  "content": "BBB",
-  "shared_count": 12,
-  "region_id": 1,
-  "category_id": 1
+  "title": "ravshan",
+  "description": "gggggg",
+  "content": "mailumotlar",
+  "categoryId": 1,
+  "regionId": 1,
+  "category_id": 1,
+  "attachId": "7f12f329-e7c2-4e08-88d9-e268deb1c08c",
+  "typeId": 21
 
 }
 
 ### Delete profle
-DELETE localhost:8080/api/v1/article1/delete/2
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+DELETE localhost:8080/api/v1/article1/delete/57e6650c-dca7-438f-a77f-e7b5d4531820
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDM2MjIsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjgzMDAyMiwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.s8jNCiTz8zazZAaCGv10c6yKQqvRT3x7ct88ptqcpilUN1ZNioJo-Fvaf7yQ6b6hez15Jdvpjgvl-q9AWivuhg
 Content-Type:  application/json
 
-### Update2 profle
-PUT localhost:8080/api/v1/article1/update2/236c7588-da3f-4a22-930b-372aec18138a
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIzOTYxODUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MjQ4MjU4NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.vdC5XN2ih6I-lACkcL0R23fdem4sclwMEO9F9EKbw5HPbgYeI4XLv0ECnv6B02Wk4LNwDtjWcG8bVnKYWpJ_AQ
+### changeStatus aritcle
+PUT localhost:8080/api/v1/article1/update2/1f2c405a-6846-42aa-8659-a1623358dbb9
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MjgxNTgsImlkIjo3LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjgzMDE0NTU4LCJpc3MiOiJLdW51eiB0ZXN0IHBvcnRhbGkifQ.GEmbdG2-k4No5J4tcEAbetUqVcgbDD9nHu5Whp_JtYdZ7YNHu_Qxq1mBfK8RZgiW1i8zr41NDe20_HpOmXoB9g
 Content-Type:  application/json
 
 {
-    "articleStatus":  "NOTPUBLISHED"
+    "status":  "NOT_PUBLISHED"
 }
+
+### Profile List
+GET localhost:8080/api/v1/article1/pagination?page=1&size=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI3NDczMzYsImlkIjoxMSwicm9sZSI6IkFETUlOIiwiZXhwIjoxNjgyODMzNzM2LCJpc3MiOiJLdW51eiB0ZXN0IHBvcnRhbGkifQ.C3JtZ3qZrnb44DeO-t41RPNbdNRZlUlikyrH0vdmje4f5-K6xgRZyXdng9ukhAOPATbe8KmovcAPV2Tfw8etsQ
+Content-Type: application/json
+
+### Profile List
+GET localhost:8080/api/v1/article1/pagination5/1
+Content-Type: application/json
+
+### Profile List
+GET localhost:8080/api/v1/article1/pagination3/1
+Content-Type: application/json
+
+### Profile List
+GET localhost:8080/api/v1/article1/pagination4/1
+Content-Type: application/json
+
+### Artickle 10
+GET localhost:8080/api/v1/article1/getALL4
+Content-Type: application/json
+
+### Artickle 11
+GET localhost:8080/api/v1/article1/getALL4/TagName
+Content-Type: application/json
+
+### Artickle 12
+GET localhost:8080/api/v1/article1/getALL4/TagName
+Content-Type: application/json
+
+
 
