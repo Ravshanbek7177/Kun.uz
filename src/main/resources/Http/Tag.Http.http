@@ -1,0 +1,8 @@
+### Tag create
+POST localhost:8080/api/v1/tag
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MjU4OTUsImlkIjoxMCwicm9sZSI6Ik1PREVSQVRPUiIsImV4cCI6MTY4MzAxMjI5NSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.fJ62Z2wFk9NcC-7xxHYJhQnJToHqoKTwfS2FEqQG-XgECbS9VGnXMcFdZWFQX4WpiGp_en5z3e83edxEGIzbWQ
+Content-Type:  application/json
+
+{
+ "name": "fffff"
+}

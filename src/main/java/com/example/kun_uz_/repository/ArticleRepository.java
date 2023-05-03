@@ -43,9 +43,13 @@ public interface ArticleRepository extends CrudRepository<ArticleEntity, String>
             " FROM article AS a order by view_count desc Limit :limit", nativeQuery = true)
     List<ArticleShortInfoMapper> getALL4(@Param("limit") Integer limit);
 
+/*
     @Query(value = "SELECT a.id , a.title,a.description,a.attach_id,a.published_date" +    //11
             " FROM article AS a  where a.TagName =: TagName  order by created_date desc Limit :limit", nativeQuery = true)
     List<ArticleEntity> getALLTagName(@Param("TagName") String TagName, @Param("limit") Integer limit);
+
+*/
+
 
 
 

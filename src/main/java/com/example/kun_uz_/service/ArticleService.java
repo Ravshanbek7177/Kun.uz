@@ -229,12 +229,12 @@ public class ArticleService {
 
     }
 
-    public List<ArticleShortInfo> getALLTagName(String tagName) {
+ /*   public List<ArticleShortInfo> getALLTagName(String tagName) {
         List<ArticleEntity> mappers = articleRepository.getALLTagName(tagName,4);
         List<ArticleShortInfo> infos = new LinkedList<>();
         mappers.forEach(articleEntity -> toArticleShortInfo((ArticleEntity) infos) );
        return null;
-    }
+    }*/
 
 /*        public List<ArticleShortInfo> getLast8WithoutList(List<String> list1) {
             List<ArticleEntity> entityList = articleRepository.getAllArticle(ArticleStatus.NOT_PUBLISHED);

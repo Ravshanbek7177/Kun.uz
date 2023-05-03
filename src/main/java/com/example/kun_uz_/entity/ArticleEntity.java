@@ -77,6 +77,9 @@ public class ArticleEntity {  // bo'ldi
     private Integer viewCount;
     @Column(name = "article_type")
     private Integer article_type;
+    @ManyToOne
+    @JoinColumn(name = "tag_Id", insertable = false, updatable = false)
+    private TagEntity tagId;
 
     public ArticleEntity() {
 

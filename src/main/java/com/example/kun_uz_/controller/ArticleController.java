@@ -101,10 +101,10 @@ public class ArticleController {       //    BO"LDI BU
         return ResponseEntity.ok(service.getALL4());
     }
 
-    @GetMapping("/getALL4/{TagName}")
+ /*   @GetMapping("/getALL4/{TagName}")
     private ResponseEntity<List<ArticleShortInfo>> getALLTagName(@PathVariable("TagName") String TagName){
         return ResponseEntity.ok(service.getALLTagName(TagName));
-    }
+    }*/
 
 
 
