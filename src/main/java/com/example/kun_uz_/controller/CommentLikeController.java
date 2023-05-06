@@ -15,18 +15,18 @@ public class CommentLikeController {
 @Autowired
 private CommentLikeService commentLikeService;
     @GetMapping("like/{id}")
-    private ResponseEntity<?> like(@PathVariable("id") String  articleId,
+    private ResponseEntity<?> like(@PathVariable("id") Integer  commentId,
                                    @RequestHeader("Authorization") String authorization){
         JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.USER);
-        return  ResponseEntity.ok(commentLikeService.like(jwt.getId(),articleId));
+        return  ResponseEntity.ok(commentLikeService.like(jwt.getId(),commentId));
     }
 
 
     @GetMapping("dislike/{id}")
-    private ResponseEntity<?> dislike(@PathVariable("id") String  articleId,
+    private ResponseEntity<?> dislike(@PathVariable("id") Integer  commentId,
                                    @RequestHeader("Authorization") String authorization){
         JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.USER);
-        return  ResponseEntity.ok(commentLikeService.dislike(jwt.getId(),articleId));
+        return  ResponseEntity.ok(commentLikeService.dislike(jwt.getId(),commentId));
     }
 
 }

@@ -16,39 +16,39 @@ public class CommentLikeService {
     @Autowired
     private CommentLikeRepository commentLikeRepository;
 
-    public boolean like(Integer profileId, String articleId) {
-        makeEmotion(profileId,articleId, EmotionStatus.LIKE);
+    public boolean like(Integer profileId,Integer commentId) {
+        makeEmotion(profileId,commentId, EmotionStatus.LIKE);
         return true;
     }
-    public boolean dislike(Integer profileId, String articleId){
-        makeEmotion(profileId,articleId,EmotionStatus.DISLIKE);
+    public boolean dislike(Integer profileId, Integer commentId){
+        makeEmotion(profileId,commentId,EmotionStatus.DISLIKE);
         return true;
     }
-    public boolean delete(Integer profileId, String articleId){
-        commentLikeRepository.delete(articleId, profileId);
+    public boolean delete(Integer profileId, Integer commentId){
+        commentLikeRepository.delete(commentId, profileId);
         return true;
     }
 
 
-    private void makeEmotion(Integer profileId, String articleId, EmotionStatus status) {
-        Optional<CommentLikeEntity>  optional = commentLikeRepository.findByArticleIdAndProfileId(profileId,articleId);
-        CommentLikeEntity entity = optional.get();
+    private void makeEmotion(Integer profileId, Integer commentId, EmotionStatus status) {
+        Optional<CommentLikeEntity>  optional = commentLikeRepository.findByCommentIdAndProfileId(profileId,commentId);
+       //  CommentLikeEntity entity = optional.get();
         if(optional.isEmpty()){
       CommentLikeEntity entity1 = new CommentLikeEntity();
-      entity1.setArticleId(articleId);
+      entity1.setCommentId(commentId);
       entity1.setProfileId(profileId);
       entity1.setStatus(EmotionStatus.LIKE);
-      commentLikeRepository.save(entity);
+      commentLikeRepository.save(entity1);
 
         } else {
 
-            if(entity.getStatus().equals(EmotionStatus.LIKE)){
-                delete(profileId, articleId);
+          /*  if(entity.getStatus().equals(EmotionStatus.LIKE)){
+                delete(profileId, commentId);
             }
             if(entity.getStatus().equals(EmotionStatus.DISLIKE)){
-                delete(profileId, articleId);
-            }
-            commentLikeRepository.update(status, articleId, profileId);
+                delete(profileId, commentId);
+            }*/
+            commentLikeRepository.update(status, commentId, profileId);
 
         }
 

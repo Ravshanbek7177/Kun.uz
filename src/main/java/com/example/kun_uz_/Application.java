@@ -10,7 +10,7 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-        System.out.println(JwtUtil.encode(4, ProfileRole.USER));
+      //  System.out.println(JwtUtil.encode(4, ProfileRole.USER));
     }
 
 }

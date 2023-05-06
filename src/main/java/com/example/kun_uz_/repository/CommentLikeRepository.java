@@ -14,16 +14,17 @@ import java.util.Optional;
 @Repository
 public interface CommentLikeRepository extends CrudRepository<CommentLikeEntity,Integer> {
 
-    Optional<CommentLikeEntity> findByArticleIdAndProfileId(Integer profileId, String articleId);
   @Modifying
   @Transactional
-    @Query("update CommentLikeEntity set status =:status where  profileId =:profileId and articleId =:articleId")
+    @Query("update CommentLikeEntity set status =:status where  profileId =:profileId and commentId =:commentId")
   int update(@Param("status") EmotionStatus status,
-             @Param("articleId") String articleId,
+             @Param("commentId") Integer commentId,
              @Param("profileId") Integer profileId);
 
     @Modifying
     @Transactional
-    @Query("delete from CommentLikeEntity where articleId=:articleId and profileId=:profileId")
-    void delete(String articleId, Integer profileId);
+    @Query("delete from CommentLikeEntity where commentId=:commentId and profileId=:profileId")
+    void delete(Integer commentId, Integer profileId);
+
+  Optional<CommentLikeEntity> findByCommentIdAndProfileId(Integer profileId, Integer commentId);
 }

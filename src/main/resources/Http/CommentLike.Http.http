@@ -1,6 +1,7 @@
 
 ### CommentLike Pag
-GET localhost:8080/api/v1/commentLike/like/5436cea7-d7f6-4a0b-9b04-e819e7063049
+GET localhost:8080/api/v1/commentLike/like/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMzNTk2MjEsImlkIjo0LCJyb2xlIjoiVVNFUiIsImV4cCI6MTY4MzQ0NjAyMSwiaXNzIjoiS3VudXogdGVzdCBwb3J0YWxpIn0.IyKZQWT7HOqL9HCbh4SUBJamuUzfQMGPuwa5JAl7nVtB29lTjw-0jTjfe9JMwASW5iiGPQsoTAf8qT5yKT2mkA
 Content-Type:  application/json
 
 
