@@ -3,6 +3,7 @@ package com.example.kun_uz_.service;
 
 import com.example.kun_uz_.dto.RegionDTO.RegionDTO;
 import com.example.kun_uz_.entity.RegionEntity;
+import com.example.kun_uz_.enums.LangEnum;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.exps.ItemNotFoundException;
 import com.example.kun_uz_.repository.RegionRepository;
@@ -91,6 +92,24 @@ public class RegionService {
             return response;
         }
         throw new ItemNotFoundException("ArticleType is empty");
+    }
+
+    public RegionDTO getByIdAndLang(Integer regionId, LangEnum lang) {
+        RegionEntity entity = get(regionId);
+        RegionDTO dto = new RegionDTO();
+        dto.setId(entity.getId());
+        switch (lang) {
+            case en -> {
+                dto.setName(entity.getNameEN());
+            }
+            case ru -> {
+                dto.setName(entity.getNameRU());
+            }
+            case uz -> {
+                dto.setName(entity.getNameUZ());
+            }
+        }
+        return dto;
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.kun_uz_.service;
 
 import com.example.kun_uz_.dto.articleTypeDto.ArticleTypeDTO;
 import com.example.kun_uz_.entity.ArticleTypeEntity;
+import com.example.kun_uz_.enums.LangEnum;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.exps.ItemNotFoundException;
 import com.example.kun_uz_.repository.ArticleTypeRepository;
@@ -96,5 +97,10 @@ public class ArticleTypeService {
         Page<ArticleTypeDTO> response = new PageImpl<>(list,pageable,totalCount);
 
         return response;
+    }
+
+    public ArticleTypeDTO getByIdAndLang(Integer categoryId) {
+
+        return null;
     }
 }

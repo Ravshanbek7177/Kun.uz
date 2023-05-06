@@ -62,12 +62,16 @@ Content-Type: application/json
 GET localhost:8080/api/v1/article1/pagination3/1
 Content-Type: application/json
 
-### Profile List
-GET localhost:8080/api/v1/article1/pagination4/1
+### Profile List   // 8
+GET localhost:8080/api/v1/article1/pagination8?lang=uz
+Accept-Language: uz
+
+### Artickle 9
+GET localhost:8080/api/v1/article1/getALL9/1
 Content-Type: application/json
 
 ### Artickle 10
-GET localhost:8080/api/v1/article1/getALL4
+GET localhost:8080/api/v1/article1/getALL10/1
 Content-Type: application/json
 
 ### Artickle 11
@@ -79,4 +83,24 @@ GET localhost:8080/api/v1/article1/getALL4/TagName
 Content-Type: application/json
 
 
+### Artickle 15
+GET localhost:8080/api/v1/article1/getALL15/1
+Content-Type: application/json
+
+
+### Artickle 16
+PUT localhost:8080/api/v1/article1/getALL16/1
+Content-Type: application/json
+
+### Artickle 17
+PUT localhost:8080/api/v1/article1/getALL17/1
+Content-Type: application/json
+
+### Artickle 18
+POST localhost:8080/api/v1/article1/filter
+Content-Type:  application/json
+
+{
+  "id": "66676866-7a39-44dc-9292-22f6770d04e0"
+}
 

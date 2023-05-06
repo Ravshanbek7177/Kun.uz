@@ -39,5 +39,8 @@ public class ProfileEntity {  // Bo'ldi
     // photo_id
     @Column(name = "prt_id")
     private Integer prtId;
+  /*  @OneToMany()
+    @JoinColumn(name = "attach_id", insertable = false, updatable = false)
+    private AttachEntity attach;*/
 
 }

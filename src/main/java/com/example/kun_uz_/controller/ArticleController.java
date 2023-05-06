@@ -1,10 +1,8 @@
 package com.example.kun_uz_.controller;
 
 import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
-import com.example.kun_uz_.dto.article.ArticleFullDTO;
-import com.example.kun_uz_.dto.article.ArticleRequestDTO;
-import com.example.kun_uz_.dto.article.ArticleShortInfo;
-import com.example.kun_uz_.dto.article.ChangeStatusDTO;
+import com.example.kun_uz_.dto.article.*;
+import com.example.kun_uz_.entity.ArticleEntity;
 import com.example.kun_uz_.enums.ProfileRole;
 
 import com.example.kun_uz_.service.ArticleService;
@@ -85,27 +83,62 @@ public class ArticleController {       //    BO"LDI BU
         return ResponseEntity.ok(service.toArticleShortInfo(String ));
     }*/
 
-  /*  @GetMapping("/pagination/{id}")  // 8
-    private ResponseEntity<List<ArticleFullDTO>> pagination(@PathVariable("Id") String  id , @RequestBody ArticleFullDTO dto){
-        return ResponseEntity.ok(service.getAllLang(id,dto));
+    @GetMapping("/pagination8")  // 8
+    private ResponseEntity<List<ArticleFullDTO>> pagination(@RequestParam("lang") String lang){
+        return ResponseEntity.ok(service.getAllLang(lang));
     }
-*/
 
     @GetMapping("/pagination4/{Id}")
     private  ResponseEntity<?> pagination4(@PathVariable("Id") String id){
         return ResponseEntity.ok(service.pagination4(id));
     }
 
-    @GetMapping("/getALL4")
-    private ResponseEntity<List<ArticleShortInfo>> getALL4(){
-        return ResponseEntity.ok(service.getALL4());
+    @GetMapping("/getALL10")
+    private ResponseEntity<List<ArticleShortInfo>> getALL10(){
+        return ResponseEntity.ok(service.getALL10());
     }
 
- /*   @GetMapping("/getALL4/{TagName}")
+
+
+
+ /*   @GetMapping("/getALL10/{TagName}")
     private ResponseEntity<List<ArticleShortInfo>> getALLTagName(@PathVariable("TagName") String TagName){
         return ResponseEntity.ok(service.getALLTagName(TagName));
     }*/
 
+    @GetMapping("/getALL9/{id}")
+ private ResponseEntity<List<ArticleShortInfo>> getALLId(@PathVariable("id") String id) {
+        return ResponseEntity.ok(service.getALLId(id));
+
+    }
+
+    @GetMapping("/getALL15/{id}")
+    private ResponseEntity<?> getALLPagination(@PathVariable("id") Integer id,
+                                               @RequestParam(value = "page",defaultValue = "1") Integer page,
+                                                              @RequestParam(value = "size",defaultValue = "10") Integer size
+                                                              ) {
+        return ResponseEntity.ok(service.getALLPagination(id,page , size));
+
+    }
+
+    @PutMapping("/getALL16/{id}")
+    private ResponseEntity<Boolean> getALLCount(@PathVariable("id") String id) {
+        return ResponseEntity.ok(service.getALLCount(id));
+
+    }
+
+    @PutMapping("/getALL17/{id}")
+    private ResponseEntity<Boolean> getALLShare(@PathVariable("id") String id) {
+        return ResponseEntity.ok(service.getALLShare(id));
+
+    }
+
+   @PutMapping("/filter")
+    private ResponseEntity<List<ArticleEntity>> getFilter(@RequestParam(value = "page",defaultValue = "1") Integer page,
+                                                          @RequestParam(value = "size",defaultValue = "10") Integer size,
+                                                          @RequestBody ArticleFilterDTO dto){
+        return ResponseEntity.ok(service.getFilter(dto, page,size));
+   }
 
 
 

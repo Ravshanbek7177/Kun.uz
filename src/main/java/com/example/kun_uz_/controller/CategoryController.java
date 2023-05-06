@@ -1,9 +1,8 @@
 package com.example.kun_uz_.controller;
 
-import com.example.kun_uz_.dto.categoryEntity.CategoryDTO;
+import com.example.kun_uz_.dto.categoryDTO.CategoryDTO;
 import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
 import com.example.kun_uz_.enums.ProfileRole;
-import com.example.kun_uz_.exps.MethodNotAllowedException;
 import com.example.kun_uz_.service.CategoryService;
 import com.example.kun_uz_.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

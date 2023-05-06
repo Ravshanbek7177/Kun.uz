@@ -1,13 +1,16 @@
 package com.example.kun_uz_.service;
 
-import com.example.kun_uz_.dto.article.ArticleRequestDTO;
-import com.example.kun_uz_.dto.article.ArticleShortInfo;
-import com.example.kun_uz_.dto.article.ChangeStatusDTO;
+import com.example.kun_uz_.dto.RegionDTO.RegionDTO;
+import com.example.kun_uz_.dto.article.*;
+import com.example.kun_uz_.dto.articleTypeDto.ArticleTypeDTO;
+import com.example.kun_uz_.dto.categoryDTO.CategoryDTO;
 import com.example.kun_uz_.entity.*;
 import com.example.kun_uz_.enums.ArticleStatus;
 import com.example.kun_uz_.exps.AppBadRequestException;
 import com.example.kun_uz_.exps.ItemNotFoundException;
+import com.example.kun_uz_.mapper.ArticleFullMapper;
 import com.example.kun_uz_.mapper.ArticleShortInfoMapper;
+import com.example.kun_uz_.repository.ArticleFilterRepository;
 import com.example.kun_uz_.repository.ArticleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +28,16 @@ public class ArticleService {
     private ArticleRepository articleRepository;
     @Autowired
     private final AttachService attachService;
+    @Autowired
+    private ArticleTypeService articleTypeService;
 
     @Autowired
     private final RegionService regionService;
     @Autowired
     private final CategoryService categoryService;
+
+    @Autowired
+    private ArticleFilterRepository filterRepository;
 
 
     public ArticleRequestDTO create(ArticleRequestDTO dto, Integer moderId) {
@@ -150,13 +158,13 @@ public class ArticleService {
         return response;
     }
 
-   /* public List<ArticleShortInfo> getAll5(Integer id) {
-        List<ArticleShortInfo> entityList = articleRepository.getTopN(id, ArticleStatus.PUBLISHED.name(), 5);
-        List<ArticleShortInfo> dtoList = new LinkedList<>();
-        entityList.forEach(entity ->
-                dtoList.add((ArticleShortInfo) toArticleShortInfo(entity)));
-        return dtoList;
-    }*/
+    /* public List<ArticleShortInfo> getAll5(Integer id) {
+         List<ArticleShortInfo> entityList = articleRepository.getTopN(id, ArticleStatus.PUBLISHED.name(), 5);
+         List<ArticleShortInfo> dtoList = new LinkedList<>();
+         entityList.forEach(entity ->
+                 dtoList.add((ArticleShortInfo) toArticleShortInfo(entity)));
+         return dtoList;
+     }*/
     // 1 chi yo'li
  /*   public List<ArticleShortInfo> getAll5(Integer id){
         List<ArticleEntity> entityList = articleRepository.findTop5ByTypeAndStatusAndVisibleOrderByCreatedDateDesc(id, ArticleStatus.PUBLISHED, true);
@@ -166,14 +174,15 @@ public class ArticleService {
         return dtoList;
 
     }*/
-   public List<ArticleShortInfo> getAll5(Integer id){
-       List<ArticleShortInfoMapper> entityList = articleRepository.getTopN(id, ArticleStatus.PUBLISHED.name(), 5);
-       List<ArticleShortInfo> dtoList = new LinkedList<>();
-       entityList.forEach(entity ->
-               dtoList.add(toArticleShortInfo(entity)));
-       return dtoList;
+    public List<ArticleShortInfo> getAll5(Integer id) {
+        List<ArticleShortInfoMapper> entityList = articleRepository.getTopN(id, ArticleStatus.PUBLISHED.name(), 5);
+        List<ArticleShortInfo> dtoList = new LinkedList<>();
+        entityList.forEach(entity ->
+                dtoList.add(toArticleShortInfo(entity)));
+        return dtoList;
 
-   }
+    }
+
     public ArticleShortInfo toArticleShortInfo(ArticleShortInfoMapper entity) {
         ArticleShortInfo dto = new ArticleShortInfo();
         dto.setId(entity.getId());
@@ -184,21 +193,22 @@ public class ArticleService {
         return dto;
     }
 
-   /* public List<ArticleShortInfo> getAll3(Integer id) {   // JPA kuveriy bo'ldi
-        List<ArticleEntity> entityList = articleRepository.findTop3ByType_IdAndStatusAndVisibleOrderByCreatedDateDesc(id,ArticleStatus.NOT_PUBLISHED,true);
+
+    /* public List<ArticleShortInfo> getAll3(Integer id) {   // JPA kuveriy bo'ldi
+         List<ArticleEntity> entityList = articleRepository.findTop3ByType_IdAndStatusAndVisibleOrderByCreatedDateDesc(id,ArticleStatus.NOT_PUBLISHED,true);
+         List<ArticleShortInfo> dtoList = new LinkedList<>();
+         entityList.forEach(entity ->
+                 dtoList.add(toArticleShortInfo(entity)));
+         return dtoList;
+     }
+ */
+    public List<ArticleShortInfo> getAll3(String id) {
+        List<ArticleShortInfoMapper> entityList = articleRepository.find3ByTypeIdNative(id, ArticleStatus.NOT_PUBLISHED.name(), 3);
         List<ArticleShortInfo> dtoList = new LinkedList<>();
         entityList.forEach(entity ->
                 dtoList.add(toArticleShortInfo(entity)));
         return dtoList;
     }
-*/
-   public List<ArticleShortInfo> getAll3(String  id) {
-       List<ArticleShortInfoMapper> entityList = articleRepository.find3ByTypeIdNative(id,ArticleStatus.NOT_PUBLISHED.name(),3);
-       List<ArticleShortInfo> dtoList = new LinkedList<>();
-       entityList.forEach(entity ->
-               dtoList.add(toArticleShortInfo(entity)));
-       return dtoList;
-   }
 
     private ArticleShortInfo toArticleShortInfo(ArticleEntity entity) {
         ArticleShortInfo dto = new ArticleShortInfo();
@@ -211,23 +221,101 @@ public class ArticleService {
     }
 
     public List<ArticleShortInfo> pagination4(String id) {
-        List<ArticleShortInfoMapper> articleEntities = articleRepository.findAll4(id,4);
+        List<ArticleShortInfoMapper> articleEntities = articleRepository.findAll4(id, 4);
         List<ArticleShortInfo> articleShortInfos = new LinkedList<>();
-          articleEntities.forEach(articleShortInfo -> {
-                       articleShortInfos.add(toArticleShortInfo(articleShortInfo));
-          });
-       return articleShortInfos;
+        articleEntities.forEach(articleShortInfo -> {
+            articleShortInfos.add(toArticleShortInfo(articleShortInfo));
+        });
+        return articleShortInfos;
     }
 
-    public List<ArticleShortInfo> getALL4() {
-       List<ArticleShortInfoMapper> articleEntities = articleRepository.getALL4(4);
-      List<ArticleShortInfo> infos = new LinkedList<>();
+    public List<ArticleShortInfo> getALL10() {
+        List<ArticleShortInfoMapper> articleEntities = articleRepository.getALL10(4);
+        List<ArticleShortInfo> infos = new LinkedList<>();
         articleEntities.forEach(articleShortInfo -> {
             infos.add(toArticleShortInfo(articleShortInfo));
         });
         return infos;
 
     }
+
+    public List<ArticleFullDTO> getAllLang( String lang) {  // 8
+
+        List<ArticleFullMapper> articleEntities = articleRepository.getALL8(lang);
+        List<ArticleFullDTO> infos = new LinkedList<>();
+        articleEntities.forEach(articleFullMapper -> {
+            infos.add(toArticleFullInfo(articleFullMapper));
+        });
+        return infos;
+    }
+
+    private ArticleFullDTO toArticleFullInfo(ArticleFullMapper entity) {
+        ArticleFullDTO dto = new ArticleFullDTO();
+        dto.setId(entity.getId());
+        dto.setTitle(entity.getTitle());
+        dto.setDescription(entity.getDescription());
+        dto.setContent(entity.getContent());
+        dto.setPublishedDate(entity.getPublishedDate());
+        dto.setImage(attachService.getAttachLink(entity.getAttachId()));
+        dto.setCategory(new CategoryDTO(entity.getCategoryId(),entity.getCategoryName()));
+        dto.setRegion(new RegionDTO(entity.getRegionId(),entity.getRegionName()));
+        dto.setArticleType(new ArticleTypeDTO(entity.getCategoryName(),entity.getTypeName()));
+         return  dto;
+    }
+
+/*    public ArticleFullDTO toFullDTO(ArticleEntity entity ) {
+        ArticleFullDTO dto = new ArticleFullDTO();
+        dto.setId(entity.getId());
+        dto.setTitle(entity.getTitle());
+        dto.setDescription(entity.getDescription());
+        dto.setContent(entity.getContent());
+        dto.setPublishedDate(entity.getPublishedDate());
+        dto.setViewCount(entity.getViewCount());
+        dto.setImage(attachService.getAttachLink(entity.getAttachId()));
+        dto.setCategory(categoryService.get(new CategoryDTO(entity.getCategoryId(),entity.getCategory())));
+        dto.setRegion(regionService.getByIdAndLang(entity.getCategoryId(), langEnum));
+        dto.setArticleType(articleTypeService.getByIdAndLang(entity.getCategoryId(), langEnum));
+        // tag_list
+        return dto;
+    }*/
+
+    public List<ArticleShortInfo> getALLId(String id) {
+        List<ArticleShortInfoMapper> mappers = articleRepository.getAllId(id,4);
+        List<ArticleShortInfo> infos = new LinkedList<>();
+        mappers.forEach(articleShortInfo -> {
+            infos.add(toArticleShortInfo(articleShortInfo));
+        });
+        return infos;
+    }    //
+
+    public Page<ArticleShortInfo> getALLPagination(Integer id, Integer page, Integer size) {
+        Sort sort = Sort.by(Sort.Direction.DESC , "createdDate");
+        Pageable paging = PageRequest.of(page - 1, size, sort);
+
+        Page<ArticleEntity> pageObj = articleRepository.findAllByPagination(id, paging);
+        long content =  pageObj.getTotalElements();
+        List<ArticleEntity> entityList = pageObj.getContent();
+        List<ArticleShortInfo> list = new LinkedList<>();
+        entityList.forEach(entity -> {
+            list.add(toArticleShortInfo(entity));
+        });
+        return new PageImpl<>(list,paging,content);
+    }
+
+    public Boolean getALLCount(String id) {
+       boolean infos = articleRepository.getALLCount(id);
+        return infos;
+    }
+
+    public boolean getALLShare(String id) {
+       int i = articleRepository.getALLShare(id);
+        return i>0;
+    }
+    public List<ArticleEntity> getFilter(ArticleFilterDTO dto , Integer page, Integer size) {
+        List<ArticleEntity> mappers = filterRepository.getFilter(dto,page , size);
+        return mappers;
+    }
+
 
  /*   public List<ArticleShortInfo> getALLTagName(String tagName) {
         List<ArticleEntity> mappers = articleRepository.getALLTagName(tagName,4);
@@ -256,23 +344,6 @@ public class ArticleService {
             });
             return infoDTOS;
         }*/
-
- /*   public List<ArticleFullDTO> getAllLang(String id, ArticleFullDTO dto) {
-        List<RegionEntity> entityList = articleRepository.findByLang(id, String.valueOf(ArticleStatus.PUBLISHED));
-    //  List<ArticleFullDTO> fullDTOS = new LinkedList<>();
-      if(dto.getId() != null){
-          RegiyonLangDTO regiyonLangDTO = new RegiyonLangDTO();
-          CategoryLangDTO categoryLangDTO = new CategoryLangDTO();
-         switch (dto.){
-             case "":
-         }
-      }
-
-       return null;
-    }*/
-
-
-
 
 
 }

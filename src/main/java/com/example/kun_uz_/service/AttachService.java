@@ -110,7 +110,7 @@ public class AttachService {
             AttachEntity attachEntity = get(id);
 
             Path file = Paths.get("attaches/" + attachEntity.getPath() + "/" + fileName);
-            org.springframework.core.io.Resource resource = new UrlResource(file.toUri());
+            Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             } else {
@@ -208,12 +208,19 @@ public class AttachService {
         return "http://localhost:8080/api/v1/attach/open/" + id;
     }
 
-    public AttachDTO getAttachLink(String attachId) {
+
+    public AttachDTO getByAndImag(String attachId) {
         AttachDTO dto = new AttachDTO();
         dto.setId(attachId);
         dto.setUrl(serverHost + "/api/v1/attach/open/" + attachId);
-        return dto;
+        return null;
     }
+
+    public AttachDTO getAttachLink(String attachId) {
+        return null;
+    }
+
+
 /*
     public AttachDTO saveToSystem3(MultipartFile file) {
         try {

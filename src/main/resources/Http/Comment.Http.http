@@ -1,0 +1,50 @@
+### Create comment
+POST localhost:8080/api/v1/comment
+Content-Type:  application/json
+
+{
+  "profileId": 1,
+  "content": "zzzzz",
+  "articleId": "5436cea7-d7f6-4a0b-9b04-e819e7063049",
+  "replyId": 1
+
+}
+
+### Update comment
+PUT localhost:8080/api/v1/comment/update/1
+Content-Type:  application/json
+
+{
+  "profileId": 1,
+  "content": "ssssss",
+  "articleId": 1,
+  "regionId": 1
+
+}
+
+
+### Delete comment
+DELETE localhost:8080/api/v1/comment/delete/2
+Content-Type:  application/json
+
+### GET comment
+GET localhost:8080/api/v1/comment/getAll/1
+Content-Type:  application/json
+
+### GET Pag
+GET localhost:8080/api/v1/comment/getPagination?page=2&size=2
+Content-Type:  application/json
+
+
+### GET Pag
+GET localhost:8080/api/v1/comment/Filter?page=2&size=2
+Content-Type:  application/json
+
+{
+
+}
+
+
+### GET comment
+GET localhost:8080/api/v1/comment/getAllREP/1
+Content-Type:  application/json

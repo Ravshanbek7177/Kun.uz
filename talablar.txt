@@ -52,7 +52,7 @@ ADMIN, MODERATOR, PUBLISHER, USER
     3. Update Profile Detail (ANY) (Profile updates own details)
     4. Profile List (ADMIN) (Pagination)
     5. Delete Profile By Id (ADMIN)
-    6. Update Photo (ANY) (Murojat qilgan odamni rasmini upda qilish)   (remove old image)
+  -- 6. Update Photo (ANY) (Murojat qilgan odamni rasmini upda qilish)   (remove old image)
            photo_id
     7. Filter (name,surname,phone,role,created_date_from,created_date_to)
 3. ArticleType

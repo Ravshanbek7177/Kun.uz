@@ -1,10 +1,10 @@
 package com.example.kun_uz_.service;
 
 import com.example.kun_uz_.dto.articleTypeDto.ArticleTypeDTO;
-import com.example.kun_uz_.dto.categoryEntity.CategoryDTO;
+import com.example.kun_uz_.dto.categoryDTO.CategoryDTO;
 import com.example.kun_uz_.entity.CategoryEntity;
+import com.example.kun_uz_.enums.LangEnum;
 import com.example.kun_uz_.exps.AppBadRequestException;
-import com.example.kun_uz_.exps.ItemNotFoundException;
 import com.example.kun_uz_.repository.CategoryRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +48,7 @@ public class CategoryService {
         dto.setId(entity.getId());
         return dto;
     }
+/*
     public Boolean delete(Integer id) {
         CategoryEntity entity = get(id);
         if(entity == null){
@@ -57,13 +58,14 @@ public class CategoryService {
         repository.save(entity);
         return true;
     }
-    public CategoryEntity get(Integer id) {
+    public CategoryDTO get(Integer id) {
         Optional<CategoryEntity> optional = repository.findById(id);
         if (optional.isEmpty()) {
             throw new ItemNotFoundException("Item not found");
         }
         return optional.get();
     }
+*/
 
     public Page<ArticleTypeDTO> list(int page, int size) {
         Sort sort = Sort.by(Sort.Direction.DESC,"createdDate");
@@ -88,4 +90,30 @@ public class CategoryService {
         return response;
     }
 
+    public CategoryDTO getByIdAndLang(Integer categoryId, LangEnum langEnum) {
+            CategoryEntity category = get(categoryId);
+            CategoryDTO dto = new CategoryDTO();
+            category.setId(categoryId);
+            switch (langEnum){
+                case en -> dto.setName(category.getNameEN());
+                case ru -> dto.setName(category.getNameRU());
+                case uz -> dto.setName(category.getNameUZ());
+            }
+        return null;
+    }
+
+    CategoryEntity get(Integer categoryId) {
+
+        return null;
+    }
+
+    public Boolean delete(Integer id) {
+        CategoryEntity entity = get(id);
+        if(entity == null){
+            throw new AppBadRequestException("yo'qku");
+        }
+        entity.setVisible(Boolean.FALSE);
+        repository.save(entity);
+        return true;
+    }
 }

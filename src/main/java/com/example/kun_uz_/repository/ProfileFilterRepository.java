@@ -59,6 +59,7 @@ public class ProfileFilterRepository {
             builder.append(" and s.createdDate <= :dateTo ");
             params.put("dateTo", LocalDateTime.of(LocalDate.from(filterDTO.getCreatedDateTo()), LocalTime.MIN));
         }
+
         Query query = this.entityManager.createQuery(builder.toString());
         for (Map.Entry<String, Object> param : params.entrySet()) {
             query.setParameter(param.getKey(), param.getValue());

@@ -1,8 +1,11 @@
 package com.example.kun_uz_.dto.ProfileDto;
 
+import com.example.kun_uz_.entity.AttachEntity;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.GeneralStatus;
 import com.example.kun_uz_.enums.ProfileRole;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -26,4 +29,6 @@ public class ProfileDTO extends ProfileEntity {
     private ProfileRole role;
     @NotNull(message = "Status required")
     private GeneralStatus status;
+
+    private AttachEntity attach;
 }
