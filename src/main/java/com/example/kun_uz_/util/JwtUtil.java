@@ -9,6 +9,7 @@ import java.util.Date;
 
 public class JwtUtil {
     private static final int tokenLiveTime = 1000 * 3600 * 24; // 1-day
+    private static final int emailLiveTime = 1000 * 120 ; // 2 minut  vaqt oralig'da
     private static final String secretKey = "dasda143mazgi";
 
     public static String encode(Integer profileId, ProfileRole role) {
@@ -80,6 +81,16 @@ public class JwtUtil {
             throw new MethodNotAllowedException("Method not allowed");
         }
         return jwtDTO;
+    }
+
+    public static String encode(String text) {
+        JwtBuilder jwtBuilder = Jwts.builder();
+        jwtBuilder.setIssuedAt(new Date());
+        jwtBuilder.signWith(SignatureAlgorithm.HS512, secretKey);
+        jwtBuilder.claim("email", text);
+        jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (emailLiveTime)));
+        jwtBuilder.setIssuer("Kunuz test portali");
+        return jwtBuilder.compact();
     }
 
 }

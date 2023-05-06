@@ -3,6 +3,7 @@ package com.example.kun_uz_.service;
 import com.example.kun_uz_.dto.authDTO.RegistrationDTO;
 import com.example.kun_uz_.dto.authDTO.AuthDTO;
 import com.example.kun_uz_.dto.authDTO.AuthResponseDTO;
+import com.example.kun_uz_.dto.authDTO.RegistrationResponseDTO;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.GeneralStatus;
 import com.example.kun_uz_.enums.ProfileRole;
@@ -22,6 +23,8 @@ import java.util.Optional;
 public class AuthService {
     @Autowired
     private ProfileRepository profileRepository;
+    @Autowired
+    private MailSenderService mailSenderService;
 
     public AuthResponseDTO login(AuthDTO dto) {
         Optional<ProfileEntity> optional = profileRepository.findByEmailAndPasswordAndVisible(
@@ -44,9 +47,9 @@ public class AuthService {
     }
 
     public Object registration(RegistrationDTO dto) {
-        Optional<ProfileEntity> optional = profileRepository.findByEmailAndPasswordAndPhone(dto.getEmail(),MD5Util.getMd5Hash(dto.getPassword()),dto.getPhone());
-        if(optional.isPresent()){
-            throw new ItemNotFoundException("Email or phone or password incorrect");
+        Optional<ProfileEntity> optional = profileRepository.findByEmail(dto.getEmail());
+        if (optional.isPresent()) {
+            throw new ItemNotFoundException("Email already exists mazgi.");
         }
         ProfileEntity entity = new ProfileEntity();
         entity.setName(dto.getName());
@@ -54,10 +57,13 @@ public class AuthService {
         entity.setEmail(dto.getEmail());
         entity.setPassword(MD5Util.getMd5Hash(dto.getPassword()));
         entity.setPhone(dto.getPhone());
-        entity.setStatus(GeneralStatus.ACTIVE);
+        entity.setStatus(GeneralStatus.REGISTER);
         entity.setRole(ProfileRole.USER);
+        // send email
+      mailSenderService.sendRegistrationEmailMime(dto.getEmail());
+      // save
         profileRepository.save(entity);
-
-        return dto;
+        String s = "Verification link was send to email: " + dto.getEmail();
+        return new RegistrationResponseDTO(s);
     }
 }

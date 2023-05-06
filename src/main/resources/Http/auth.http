@@ -14,15 +14,15 @@ Content-Type:  application/json
 }
 
 ### Registration
-POST localhost:8080/api/v1/auth/registration
+POST localhost:8080/api/v1/auth/register
 Content-Type:  application/json
 
 {
-  "name": "sss",
-  "surname": "sss",
-  "email": "ss@gmail.com",
+  "name": "ss",
+  "surname": "ss",
+  "email": "ahmedovravshanbek001@gmail.com",
   "phone": "222",
-  "password": "222",
+  "password": "932347177",
   "role": "MODERATOR"
 }
 
