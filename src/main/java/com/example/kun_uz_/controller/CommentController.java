@@ -39,7 +39,7 @@ public class CommentController {
         return ResponseEntity.ok(commentService.getAll(id));
     }
 
-    @GetMapping("/getPagination")
+    @GetMapping("/getPagination1")
     private ResponseEntity<Page<CommentDTO>> getPagination(@RequestParam(value = "page",defaultValue = "1") int page,
                                                            @RequestParam(value = "size",defaultValue = "6") int size){  // ,@RequestHeader("Authorization") String authorization
         return  ResponseEntity.ok(commentService.getPagination(page,size));

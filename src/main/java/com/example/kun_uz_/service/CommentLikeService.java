@@ -25,9 +25,10 @@ public class CommentLikeService {
         return true;
     }
     public boolean delete(Integer profileId, String articleId){
-        delete(profileId,articleId);
+        commentLikeRepository.delete(articleId, profileId);
         return true;
     }
+
 
     private void makeEmotion(Integer profileId, String articleId, EmotionStatus status) {
         Optional<CommentLikeEntity>  optional = commentLikeRepository.findByArticleIdAndProfileId(profileId,articleId);

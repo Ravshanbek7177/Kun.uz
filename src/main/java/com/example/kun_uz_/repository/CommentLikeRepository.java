@@ -17,8 +17,13 @@ public interface CommentLikeRepository extends CrudRepository<CommentLikeEntity,
     Optional<CommentLikeEntity> findByArticleIdAndProfileId(Integer profileId, String articleId);
   @Modifying
   @Transactional
-    @Query("update CommentEntity set status =:status where  profileId =:profileId and articleId =:articleId")
+    @Query("update CommentLikeEntity set status =:status where  profileId =:profileId and articleId =:articleId")
   int update(@Param("status") EmotionStatus status,
              @Param("articleId") String articleId,
              @Param("profileId") Integer profileId);
+
+    @Modifying
+    @Transactional
+    @Query("delete from CommentLikeEntity where articleId=:articleId and profileId=:profileId")
+    void delete(String articleId, Integer profileId);
 }

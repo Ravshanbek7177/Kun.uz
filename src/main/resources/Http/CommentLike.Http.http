@@ -1,10 +1,10 @@
 
 ### CommentLike Pag
-GET localhost:8080/api/v1/commentLike/like/
+GET localhost:8080/api/v1/commentLike/like/5436cea7-d7f6-4a0b-9b04-e819e7063049
 Content-Type:  application/json
 
 
 ### CommentDislace comment
-GET localhost:8080/api/v1/commentLike/dislike/
+GET localhost:8080/api/v1/commentLike/dislike/5436cea7-d7f6-4a0b-9b04-e819e7063049
 Content-Type:  application/json
 
