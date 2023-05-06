@@ -22,9 +22,9 @@ public class MailSenderService {
     public  void sendRegistrationEmail(String toAccount){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Registration verification\n");
-        stringBuilder.append("Clic to below to complete registration\n");
+        stringBuilder.append("Clic to below to complete registration tinchma linkga boschi \n");
         stringBuilder.append("Link:");
-        stringBuilder.append("http//localhost:8080/api/v1/auth/email/verification/");
+        stringBuilder.append("localhost:8080/api/v1/article/list");
         stringBuilder.append(JwtUtil.encode(toAccount));
         sendEmail(toAccount, "Registration",stringBuilder.toString());
 
