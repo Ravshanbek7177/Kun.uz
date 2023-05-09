@@ -1,7 +1,9 @@
 package com.example.kun_uz_.service;
 
+import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
 import com.example.kun_uz_.dto.ProfileDto.ProfileDTO;
 import com.example.kun_uz_.dto.ProfileDto.ProfileFilterDTO;
+import com.example.kun_uz_.entity.AttachEntity;
 import com.example.kun_uz_.entity.ProfileEntity;
 import com.example.kun_uz_.enums.GeneralStatus;
 import com.example.kun_uz_.exps.AppBadRequestException;
@@ -26,6 +28,8 @@ public class ProfileService {
     private ProfileRepository profileRepository;
     @Autowired
     private ProfileFilterRepository profileFilterRepository;
+    @Autowired
+    private AttachService  attachService;
 
     public ProfileDTO create(ProfileDTO dto) {  // ,
         // check - homework
@@ -144,6 +148,34 @@ public class ProfileService {
         List<ProfileEntity> entityList = profileFilterRepository.filter(studentCourseDTO);
         return entityList;
     }
+
+    public ProfileDTO updatePhoto(JwtDTO jwtDTO, String photoId) {
+        Optional<ProfileEntity> optionalProfile = profileRepository.findById(jwtDTO.getId());
+        if (optionalProfile.isEmpty()) {
+            throw new AppBadRequestException("not found profile");
+        }
+        AttachEntity attachEntity = attachService.get(photoId);
+        if (attachEntity == null) {
+            throw new AppBadRequestException("not found attach");
+        }
+        ProfileEntity entity = optionalProfile.get();
+        // todo  entity.getPhoto() photo delete qilish kk
+        entity.setAttach(attachEntity);
+        profileRepository.save(entity);
+        return entityToDto(entity);
+    }
+
+    public ProfileDTO entityToDto(ProfileEntity entity) {
+        ProfileDTO dto = new ProfileDTO();
+        dto.setEmail(entity.getEmail());
+        dto.setRole(entity.getRole());
+        dto.setPhone(entity.getPhone());
+        dto.setName(entity.getName());
+        dto.setPassword(entity.getPassword());
+        dto.setSurname(entity.getSurname());
+        return dto;
+    }
+
 }
 
 

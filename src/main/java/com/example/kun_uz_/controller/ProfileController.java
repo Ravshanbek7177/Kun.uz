@@ -59,6 +59,14 @@ public class ProfileController {   //   BO"LDI
 
     }
 
+    @PostMapping("/update-photo/{photoId}")
+    public ResponseEntity<ProfileDTO> updatePhoto(@PathVariable String photoId,
+                                                  @RequestHeader("Authorization") String authorization) {
+        JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization);
+        return ResponseEntity.ok(profileService.updatePhoto(jwtDTO, photoId));
+    }
+
+
     @PostMapping("/filter")
     public ResponseEntity<List<ProfileFilterDTO>> getFilter1(@RequestBody @Valid ProfileFilterDTO profileFilterDTO){
         return (ResponseEntity<List<ProfileFilterDTO>>) profileService.getFilter(profileFilterDTO);

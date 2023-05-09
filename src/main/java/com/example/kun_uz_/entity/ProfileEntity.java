@@ -22,8 +22,9 @@ public class ProfileEntity {  // Bo'ldi
     private String surname;
     @Column(name = "email")
     private String email;
-    @Column(name = "phone")
-    private String phone;
+    @ManyToOne
+    @JoinColumn(name = "tag_Id", insertable = false, updatable = false)
+    private AttachEntity attach;
     @Column(name = "password")
     private String password;
     @Enumerated(EnumType.STRING)
@@ -39,6 +40,8 @@ public class ProfileEntity {  // Bo'ldi
     // photo_id
     @Column(name = "prt_id")
     private Integer prtId;
+    @Column(name = "phone")
+    private String phone;
   /*  @OneToMany()
     @JoinColumn(name = "attach_id", insertable = false, updatable = false)
     private AttachEntity attach;*/
