@@ -7,6 +7,7 @@ import com.example.kun_uz_.enums.ProfileRole;
 
 import com.example.kun_uz_.service.ArticleService;
 import com.example.kun_uz_.util.JwtUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,15 +35,15 @@ public class ArticleController {       //    BO"LDI BU
 
     @PutMapping("/update/{id}")
     public ResponseEntity<ArticleRequestDTO> update(@PathVariable("id") String id, @RequestBody ArticleRequestDTO dto,
-                                             @RequestHeader("Authorization") String authorization){
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.MODERATOR);
+                                                    HttpServletRequest request){
+        JwtUtil.checkForRequiredRole(request, ProfileRole.MODERATOR);
         return ResponseEntity.ok(service.update(id,dto));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> deleteById(@PathVariable("id") String  id,
-                                                 @RequestHeader("Authorization") String authorization) {
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.MODERATOR);
+                                              HttpServletRequest request) {
+        JwtUtil.checkForRequiredRole(request, ProfileRole.MODERATOR);
         return ResponseEntity.ok(service.delete(id));
 
     }
@@ -50,23 +51,24 @@ public class ArticleController {       //    BO"LDI BU
        //    4 chi
     @PutMapping("/update2/{id}")
     public ResponseEntity<Boolean> update2(@PathVariable("id") String  id, @RequestBody ChangeStatusDTO dto,
-                                           @RequestHeader("Authorization") String authorization){
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.PUBLISHER);
+                                           HttpServletRequest request){
+        JwtUtil.checkForRequiredRole(request, ProfileRole.PUBLISHER);
         return ResponseEntity.ok(service.update2(id,dto));
     }
 
     @GetMapping("/pagination")
     public ResponseEntity<Page<ArticleRequestDTO>> pagination(@RequestParam(value = "page",defaultValue = "1") int page,
                                                               @RequestParam(value = "size",defaultValue = "6") int size,
-                                                              @RequestHeader("Authorization") String authorization) {
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
+                                                              HttpServletRequest request) {
+        JwtUtil.checkForRequiredRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(service.getAll(page,size));
     }
     @PostMapping({"","/"})
     public ResponseEntity<ArticleRequestDTO> create(@RequestBody @Valid ArticleRequestDTO dto,
-                                                    @RequestHeader("Authorization") String authorization) {
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.MODERATOR);
-        return ResponseEntity.ok(service.create(dto, jwt.getId()));
+                                                    HttpServletRequest request) {
+       JwtUtil.checkForRequiredRole(request, ProfileRole.MODERATOR);
+       Integer Pid = (Integer) request.getAttribute("id");
+        return ResponseEntity.ok(service.create(dto, Pid));
     }
     @GetMapping("/pagination5/{Id}")
     public ResponseEntity<List<ArticleShortInfo>> pagination5(@PathVariable("Id") Integer id) {

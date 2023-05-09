@@ -9,6 +9,7 @@ import com.example.kun_uz_.enums.ProfileRole;
 import com.example.kun_uz_.exps.MethodNotAllowedException;
 import com.example.kun_uz_.service.ProfileService;
 import com.example.kun_uz_.util.JwtUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,16 +26,15 @@ public class ProfileController {   //   BO"LDI
 
     @PostMapping({"", "/"})
     public ResponseEntity<ProfileDTO> create(@RequestBody @Valid  ProfileDTO dto
-            ,@RequestHeader("Authorization") String authorization) {
-
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
+            , HttpServletRequest request) {
+         JwtUtil.checkForRequiredRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.create(dto));
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<ProfileDTO> update(@PathVariable("id") Integer id, @RequestBody @Valid ProfileDTO dto,
-                                         @RequestHeader("Authorization") String authorization){
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
+                                         HttpServletRequest request){
+         JwtUtil.checkForRequiredRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.update(id,dto));
     }
 
@@ -46,15 +46,15 @@ public class ProfileController {   //   BO"LDI
     @GetMapping("/pagination")
     public ResponseEntity<Page<ProfileEntity>> pagination(@RequestParam(value = "page",defaultValue = "1") int page,
                                                           @RequestParam(value = "size",defaultValue = "6") int size,
-                                                          @RequestHeader("Authorization") String authorization) {
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
+                                                          HttpServletRequest request) {
+        JwtUtil.checkForRequiredRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.getAll(page,size));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> deleteById(@PathVariable("id") Integer id,
-                                              @RequestHeader("Authorization") String authorization) {
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
+                                             HttpServletRequest request) {
+     JwtUtil.checkForRequiredRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.delete(id));
 
     }

@@ -2,6 +2,7 @@ package com.example.kun_uz_.dto.article;
 
 import com.example.kun_uz_.entity.ArticleEntity;
 import com.example.kun_uz_.enums.ArticleStatus;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -13,6 +14,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ArticleRequestDTO {
+    @Id
+     private String  id;
     @NotNull(message = "title required")
     @Size(min = 10, max = 250 , message = "title must be between 10 and 250 character")
     private String title;

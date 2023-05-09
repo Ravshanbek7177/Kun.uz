@@ -56,7 +56,8 @@ public class ArticleService {
 
         // type
         articleRepository.save(entity);
-        return dto;
+        dto.setId(entity.getId());
+    return dto;
     }
 
     public void isValidProfile(ArticleRequestDTO dto) {

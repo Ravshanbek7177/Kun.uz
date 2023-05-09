@@ -4,6 +4,7 @@ import com.example.kun_uz_.dto.JwtDTO.JwtDTO;
 import com.example.kun_uz_.enums.ProfileRole;
 import com.example.kun_uz_.exps.MethodNotAllowedException;
 import io.jsonwebtoken.*;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.Date;
 
@@ -92,5 +93,20 @@ public class JwtUtil {
         jwtBuilder.setIssuer("Kunuz test portali");
         return jwtBuilder.compact();
     }
+
+    public static void checkForRequiredRole(HttpServletRequest request, ProfileRole... roleList) {
+        ProfileRole jwtRole = (ProfileRole) request.getAttribute("role");
+        boolean roleFound = false;
+        for (ProfileRole role : roleList) {
+            if (jwtRole.equals(role)) {
+                roleFound = true;
+                break;
+            }
+        }
+        if (!roleFound) {
+            throw new MethodNotAllowedException("Method not allowed");
+        }
+    }
+
 
 }

@@ -11,7 +11,7 @@ WHERE id = NEW.article_id;
 RETURN NEW;
 
 else
-UPDATE public.article  SET likes_count = likes_count - 1
+UPDATE article  SET likes_count = likes_count - 1
 WHERE id = NEW.article_id;
 return NEW;
 end if;
